@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React-Page</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ 
+    <style>
+        nav{
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid gray;
+            padding: 20px;
+        }
+    </style>
+
+    <script type="text/babel">
+        /* 17 x 
+         ReactDOM.render("welcome to React JS", document.getElementById("root")); */
+
+        function Searchbar() {
+         return(
+            <div>
+                <input type="text" placeholder="search"/>
+                    <button>Search</button>
+            </div>
+         )
+        }
+
+        function Navbar() {
+          return(
+                <nav>
+                <span>Home</span>
+                <Searchbar></Searchbar>
+                <span>about</span>
+                <span>Contact</span>
+            </nav>
+          )
+        }
+
+        function Login() {
+           return(
+                <dl>
+                <h2>Login</h2>
+                <dt>userName</dt>
+                <dd><input type="text" placeholder="place your userName"/></dd>
+
+                <dt>Password</dt>
+                <dd><input type="Password" placeholder="Password"/></dd>
+                <button>Submit</button>
+            </dl>
+           )
+        }
+
+        var root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(
+            <section>
+                <Navbar></Navbar>
+                <Login></Login>
+
+                <Login></Login>
+            </section>
+        );
+    </script>
+</head>
+
+<body>
+    <noscript>Please enable JavaScript on your Browser.</noscript>
+    <div id="root">
+
+    </div>
+</body>
+
+</html>
