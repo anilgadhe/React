@@ -26,6 +26,9 @@ import {FormDataDemo} from './Forms/FormData.jsx'
 import {ReactHookDemo} from './Forms/ReactHookDemo/reactHookForm.jsx'
 import {GridComponent} from './controlled-Component/Data-grid/gridComponent.jsx'
 import {ConditionalRender} from './conditionalRendering/firstDemo.jsx'
+import { LoginHookDemo } from './Hooks/getCaptchay/login.jsx'
+import { DataGridDemo } from './conditionalRendering/Datagrid/datagridComponent.jsx'
+import { SignInOut } from './conditionalRendering/third-demo.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* <App /> */}
@@ -51,6 +54,9 @@ createRoot(document.getElementById('root')).render(
     {/* <FormDataDemo/> */}
     {/* <ReactHookDemo/> */}
     {/* <GridComponent/> */}
-    <ConditionalRender/>
+    {/* <ConditionalRender/> */}
+    {/* <LoginHookDemo/> */}
+    {/* <DataGridDemo/> */}
+    <SignInOut/>
   </StrictMode>,
 )
