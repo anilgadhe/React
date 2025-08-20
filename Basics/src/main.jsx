@@ -51,12 +51,12 @@ createRoot(document.getElementById('root')).render(
     {/* <FormikYupDemo/> */}
     {/* <FormikYupRest/> */}
     {/* <FormikComponent/> */}
-    {/* <FormDataDemo/> */}
+    <FormDataDemo/>
     {/* <ReactHookDemo/> */}
     {/* <GridComponent/> */}
     {/* <ConditionalRender/> */}
     {/* <LoginHookDemo/> */}
     {/* <DataGridDemo/> */}
-    <SignInOut/>
+    {/* <SignInOut/> */}
   </StrictMode>,
 )
