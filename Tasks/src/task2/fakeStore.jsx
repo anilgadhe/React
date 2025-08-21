@@ -1,28 +1,41 @@
-import { useState } from "react";
+import { useState ,useContext, createContext} from "react";
 import { Fakeproduct } from "./fakeProduct";
 
-
+   export const userContext= createContext(null);
+ 
 export function Fakestore() {
 
     const [cartItems, setCartItems] = useState([]);
 
+    const [temp, setTemp] = useState('');
+    const [search, setSearch] = useState('');
+
     const [cartItemsCount, setCartItemsCount] = useState(0);
 
-    const[totalPrice,setTotalPrice]=useState(0);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     function handleAddtoCart(e) {
         cartItems.push(e);
 
         alert(`${e.title}\nAdded to cart`);
 
-let total = cartItems.reduce((sum, item) => sum + item.price, 0);
+        let total = cartItems.reduce((sum, item) => sum + item.price, 0);
 
-     setTotalPrice(total);
+        setTotalPrice(total);
 
         setCartItemsCount(cartItems.length)
 
 
     }
+
+    function handleChange(e) {
+        setTemp(e.target.value);   
+    }
+
+    function handleSearch() {  
+      setSearch(temp);
+    }
+
     return (
         <div>
             <header>
@@ -30,8 +43,8 @@ let total = cartItems.reduce((sum, item) => sum + item.price, 0);
                     <nav className="d-flex justify-content-between gap-5 border border-2 p-3 align-content-center m-2">
                         <div className="fw-bold fs-3">Fakestore</div>
                         <div className="input-group" style={{ width: '40%' }}>
-                            <input placeholder="Search product" className="form-control" />
-                            <button className="btn btn-warning bi bi-search"></button>
+                            <input placeholder="Search product" onChange={handleChange} value={temp} className="form-control" />
+                            <button className="btn btn-warning bi bi-search" onClick={handleSearch}></button>
                         </div>
 
                         <div>
@@ -57,18 +70,18 @@ let total = cartItems.reduce((sum, item) => sum + item.price, 0);
                                         </thead>
                                         <tbody>
                                             {
-                                             cartItems.map(items=>(
-                                                <tr key={items.id}>
-                                                    <td className="mx-2 w-50">{items.title}</td>
-                                                    <td className="mx-2">
-                                                        <img src={items.image} width="50" height="50" alt={items.id}/>
-                                                    </td>
-                                                    <td className="mx-2">{items.price}</td>
-                                                </tr>
-                                             ))
+                                                cartItems.map(items => (
+                                                    <tr key={items.id}>
+                                                        <td className="mx-2 w-50">{items.title}</td>
+                                                        <td className="mx-2">
+                                                            <img src={items.image} width="50" height="50" alt={items.id} />
+                                                        </td>
+                                                        <td className="mx-2">{items.price}</td>
+                                                    </tr>
+                                                ))
                                             }
                                             <tr className="border border-2">
-                                                <td  className="fw-bold" colSpan="2">Total Price is</td>
+                                                <td className="fw-bold" colSpan="2">Total Price is</td>
                                                 <td>{totalPrice}</td>
                                             </tr>
                                         </tbody>
@@ -80,7 +93,9 @@ let total = cartItems.reduce((sum, item) => sum + item.price, 0);
                 </div>
             </header>
             <div>
-                <Fakeproduct addtoCart={handleAddtoCart} />
+                <userContext.Provider value={search}>
+                    <Fakeproduct addtoCart={handleAddtoCart} />
+                </userContext.Provider>
             </div>
         </div>
     )

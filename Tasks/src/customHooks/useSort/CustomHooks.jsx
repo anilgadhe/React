@@ -1,4 +1,4 @@
-import { useSort } from "../customHooks/useSort/useSort"
+import { useSort } from "./useSort"
 
 
 export function CustomHooks(){
